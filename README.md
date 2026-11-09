@@ -1,19 +1,37 @@
 
 # Rose Calculator
 
-A simple, modern calculator built with **HTML, CSS, and JavaScript**. It combines essential calculation features with a clean interface, soft pink tones, and rounded bubble-style buttons.
+A modern, responsive calculator built with **HTML, CSS, and vanilla JavaScript**. Rose Calculator combines everyday arithmetic and scientific calculations in a minimal interface with a soft rose-pink visual identity.
 
 ## Features
 
-- **Basic arithmetic:** Addition, subtraction, multiplication, and division.
-- **Decimal support:** Perform calculations with decimal numbers.
-- **Calculation history:** Displays the most recent completed calculation.
-- **Keyboard support:** Use your keyboard to enter numbers and perform operations.
-- **Clear function:** Reset the current calculation.
-- **Backspace:** Remove the last entered digit.
-- **Error handling:** Handles division by zero.
-- **Responsive design:** Works across desktop and mobile screens.
-- **Interactive UI:** Rounded bubble buttons with subtle hover and click effects.
+### Standard Mode
+- Addition, subtraction, multiplication, and division.
+- Decimal calculations.
+- Percentage calculations.
+- Clear and backspace controls.
+- Compact display of the last completed calculation.
+- Keyboard support.
+
+### Scientific Mode
+- Switch between Standard and Scientific modes using the scientific icon.
+- Trigonometric functions: `sin`, `cos`, `tan`.
+- Inverse trigonometric functions: `sin⁻¹`, `cos⁻¹`, `tan⁻¹`.
+- Logarithms: `log` and `ln`.
+- Square root and cube root.
+- Exponents and factorials.
+- Parentheses for grouped expressions.
+- Mathematical constants: π and e.
+- Degree (DEG) and radian (RAD) angle modes.
+
+### Themes and Interface
+- Light and dark themes.
+- Saves the selected theme between visits.
+- Responsive layout for desktop and mobile.
+- Rounded bubble-style buttons.
+- Subtle hover and click animations.
+- Expression preview and calculation history.
+- Error handling for invalid expressions and division by zero.
 
 ## Built With
 
@@ -25,7 +43,6 @@ A simple, modern calculator built with **HTML, CSS, and JavaScript**. It combine
 
 ```text
 rose-calculator/
-│
 ├── index.html
 ├── style.css
 ├── script.js
@@ -41,15 +58,32 @@ rose-calculator/
    ```
 
 2. Open the project folder.
-3. Run `index.html` in your browser.
+3. Open `index.html` in your browser.
 
-No additional installations or dependencies are required.
+No installation or additional dependencies are required.
 
-## Preview
+## Keyboard Shortcuts
 
-A minimal calculator interface featuring a soft rose-pink palette, rounded buttons, and a compact calculation history.
+| Key | Action |
+|---|---|
+| `0–9` | Enter numbers |
+| `+ - * /` | Arithmetic operations |
+| `Enter` or `=` | Calculate |
+| `Backspace` | Delete the last character |
+| `Escape` | Clear the current expression |
+| `(` `)` | Group expressions |
+| `^` | Exponent |
+| `%` | Percentage |
+| `!` | Factorial |
+
+## Notes
+
+- Trigonometric functions use degrees by default.
+- Switch between DEG and RAD in Scientific Mode.
+- Expressions follow standard mathematical order of operations.
+- Factorials support non-negative integers up to 170.
+- The calculator uses a custom expression parser rather than JavaScript `eval()`.
 
 ---
 
 **Created by Shaqobadan**
-
