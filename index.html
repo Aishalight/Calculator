@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f2f1">
+  <meta name="description" content="Rose — a simple, elegant calculator.">
+
+  <title>Rose Calculator | Shaqobadan</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <main class="calculator">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="brand-mark">R.</div>
+        <span>ROSE STUDIO</span>
+      </div>
+
+      <span class="version">01 / CALCULATOR</span>
+    </header>
+
+    <!-- Introduction -->
+    <section class="intro">
+      <p class="eyebrow">EVERYDAY ESSENTIALS</p>
+      <h1>Calculator<span>.</span></h1>
+      <p class="subtitle">Simple things, done beautifully.</p>
+    </section>
+
+    <!-- Display -->
+    <section class="display" aria-label="Calculator display">
+
+      <div class="display-top">
+        <span>LAST CALCULATION</span>
+        <span class="display-indicator"></span>
+      </div>
+
+      <div id="history" class="history">
+        No previous calculation
+      </div>
+
+      <div class="display-divider"></div>
+
+      <div class="current-label">CURRENT VALUE</div>
+
+      <div id="expression" class="expression"></div>
+
+      <div
+        id="display"
+        class="result"
+        aria-live="polite"
+        aria-atomic="true"
+      >0</div>
+
+    </section>
+
+    <!-- Calculator Buttons -->
+    <section class="buttons" aria-label="Calculator keypad">
+
+      <button class="btn clear" data-action="clear">C</button>
+      <button class="btn operator" data-operator="÷">÷</button>
+      <button class="btn operator" data-operator="×">×</button>
+      <button class="btn operator" data-operator="-">−</button>
+
+      <button class="btn number" data-number="7">7</button>
+      <button class="btn number" data-number="8">8</button>
+      <button class="btn number" data-number="9">9</button>
+      <button class="btn operator" data-operator="+">+</button>
+
+      <button class="btn number" data-number="4">4</button>
+      <button class="btn number" data-number="5">5</button>
+      <button class="btn number" data-number="6">6</button>
+      <button class="btn number" data-number=".">.</button>
+
+      <button class="btn number" data-number="1">1</button>
+      <button class="btn number" data-number="2">2</button>
+      <button class="btn number" data-number="3">3</button>
+      <button class="btn equals" data-action="calculate">=</button>
+
+      <button class="btn number zero" data-number="0">0</button>
+      <button class="btn number" data-action="backspace" aria-label="Backspace">⌫</button>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <span>ROSE / 01</span>
+      <span>All rights reserved. <span class="copyright">© Shaqobadan</span></span>
+    </footer>
+
+  </main>
+
+</body>
+</html>
