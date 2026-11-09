@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f7f2f1">
-  <meta name="description" content="Rose — a simple, elegant calculator.">
+  <meta name="description" content="Rose Calculator — a modern standard and scientific calculator.">
 
   <title>Rose Calculator | Shaqobadan</title>
 
@@ -14,92 +14,155 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  
 </head>
 
 <body>
 
-  <main class="calculator">
+  <main class="page-shell">
 
-    <!-- Header -->
-    <header class="header">
-      <div class="brand">
-        <div class="brand-mark">R.</div>
-        <span>ROSE STUDIO</span>
-      </div>
+    <header class="page-heading">
+      <a class="brand" href="#">
+        <span class="brand-mark">R.</span>
+        <span class="brand-name">ROSE <span>STUDIO</span></span>
+      </a>
 
-      <span class="version">01 / CALCULATOR</span>
+      <span class="page-index">01 / CALCULATOR</span>
     </header>
 
-    <!-- Introduction -->
     <section class="intro">
       <p class="eyebrow">EVERYDAY ESSENTIALS</p>
       <h1>Calculator<span>.</span></h1>
-      <p class="subtitle">Simple things, done beautifully.</p>
+      <p class="intro-copy">Simple things, done beautifully.</p>
     </section>
 
-    <!-- Display -->
-    <section class="display" aria-label="Calculator display">
+    <section class="calculator" aria-label="Rose Calculator">
 
-      <div class="display-top">
-        <span>LAST CALCULATION</span>
-        <span class="display-indicator"></span>
+      <div class="calculator-topbar">
+        <span class="mode-label" id="modeLabel">STANDARD</span>
+
+        <div class="top-actions">
+
+          <!-- Scientific mode toggle -->
+          <button
+            class="icon-button"
+            id="scientificToggle"
+            type="button"
+            aria-label="Switch to scientific mode"
+            aria-pressed="false"
+            title="Scientific mode">
+
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 3h6M10 3v5l-5.4 9.2A2.5 2.5 0 0 0 6.8 21h10.4a2.5 2.5 0 0 0 2.2-3.8L14 8V3"/>
+              <path d="M7.7 15h8.6M9.5 11.8h5"/>
+            </svg>
+          </button>
+
+          <!-- Theme toggle -->
+          <button
+            class="icon-button"
+            id="themeToggle"
+            type="button"
+            aria-label="Switch to dark theme"
+            title="Toggle theme">
+
+            <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>
+            </svg>
+
+            <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.6 8.6 0 1 0 20.5 14.2Z"/>
+            </svg>
+          </button>
+
+        </div>
       </div>
 
-      <div id="history" class="history">
-        No previous calculation
+      <!-- Calculator display -->
+      <div class="display-panel" aria-live="polite" aria-atomic="true">
+
+        <div class="display-meta">
+          <span class="display-caption">LAST CALCULATION</span>
+          <span class="history-value" id="history">—</span>
+        </div>
+
+        <div class="display-divider"></div>
+
+        <span class="display-caption">CURRENT EXPRESSION</span>
+
+        <div class="expression" id="expression">&nbsp;</div>
+
+        <div class="display-result" id="display">0</div>
+
       </div>
 
-      <div class="display-divider"></div>
+      <!-- Scientific keypad -->
+      <div class="scientific-pad" id="scientificPad" hidden>
 
-      <div class="current-label">CURRENT VALUE</div>
+        <button class="key key-function" data-value="sin(">sin</button>
+        <button class="key key-function" data-value="cos(">cos</button>
+        <button class="key key-function" data-value="tan(">tan</button>
+        <button class="key key-function" data-value="asin(">sin⁻¹</button>
 
-      <div id="expression" class="expression"></div>
+        <button class="key key-function" data-value="acos(">cos⁻¹</button>
+        <button class="key key-function" data-value="atan(">tan⁻¹</button>
+        <button class="key key-function" data-value="log(">log</button>
+        <button class="key key-function" data-value="ln(">ln</button>
 
-      <div
-        id="display"
-        class="result"
-        aria-live="polite"
-        aria-atomic="true"
-      >0</div>
+        <button class="key key-function" data-value="sqrt(">√</button>
+        <button class="key key-function" data-value="cbrt(">∛</button>
+        <button class="key key-function" data-value="^">xʸ</button>
+        <button class="key key-function" data-value="!">x!</button>
+
+        <button class="key key-function" data-value="(">(</button>
+        <button class="key key-function" data-value=")">)</button>
+        <button class="key key-function" data-value="pi">π</button>
+        <button class="key key-function" data-value="e">e</button>
+
+        <button class="key key-function" data-value="%">%</button>
+        <button class="key key-angle" id="angleToggle" data-action="angle">DEG</button>
+
+      </div>
+
+      <!-- Standard keypad -->
+      <div class="standard-pad buttons" id="standardPad">
+
+        <button class="key key-clear" data-action="clear">C</button>
+        <button class="key key-operator" data-value="/">÷</button>
+        <button class="key key-operator" data-value="*">×</button>
+        <button class="key key-operator" data-action="backspace">⌫</button>
+
+        <button class="key" data-value="7">7</button>
+        <button class="key" data-value="8">8</button>
+        <button class="key" data-value="9">9</button>
+        <button class="key key-operator" data-value="-">−</button>
+
+        <button class="key" data-value="4">4</button>
+        <button class="key" data-value="5">5</button>
+        <button class="key" data-value="6">6</button>
+        <button class="key key-operator" data-value="+">+</button>
+
+        <button class="key" data-value="1">1</button>
+        <button class="key" data-value="2">2</button>
+        <button class="key" data-value="3">3</button>
+        <button class="key key-equals" data-action="equals">=</button>
+
+        <button class="key key-zero" data-value="0">0</button>
+        <button class="key" data-value=".">.</button>
+
+      </div>
 
     </section>
 
-    <!-- Calculator Buttons -->
-    <section class="buttons" aria-label="Calculator keypad">
-
-      <button class="btn clear" data-action="clear">C</button>
-      <button class="btn operator" data-operator="÷">÷</button>
-      <button class="btn operator" data-operator="×">×</button>
-      <button class="btn operator" data-operator="-">−</button>
-
-      <button class="btn number" data-number="7">7</button>
-      <button class="btn number" data-number="8">8</button>
-      <button class="btn number" data-number="9">9</button>
-      <button class="btn operator" data-operator="+">+</button>
-
-      <button class="btn number" data-number="4">4</button>
-      <button class="btn number" data-number="5">5</button>
-      <button class="btn number" data-number="6">6</button>
-      <button class="btn number" data-number=".">.</button>
-
-      <button class="btn number" data-number="1">1</button>
-      <button class="btn number" data-number="2">2</button>
-      <button class="btn number" data-number="3">3</button>
-      <button class="btn equals" data-action="calculate">=</button>
-
-      <button class="btn number zero" data-number="0">0</button>
-      <button class="btn number" data-action="backspace" aria-label="Backspace">⌫</button>
-
-    </section>
-
-    <!-- Footer -->
-    <footer>
+    <footer class="page-footer">
       <span>ROSE / 01</span>
-      <span>All rights reserved. <span class="copyright">© Shaqobadan</span></span>
+      <span>ALL RIGHTS RESERVED. © SHAQOBADAN</span>
     </footer>
 
   </main>
+
+  <script src="script.js" defer></script>
 
 </body>
 </html>

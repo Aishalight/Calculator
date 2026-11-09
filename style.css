@@ -1,423 +1,580 @@
 
+/* ==============================
+   ROSE CALCULATOR
+   Theme variables
+================================ */
+
 :root {
-  --background: #f7f2f1;
+  color-scheme: light;
+
+  --page: #f7f2f1;
+  --page-glow: rgba(222, 174, 186, .19);
+
   --card: #fffdfc;
   --display: #faf4f4;
+  --key: #fffdfc;
+  --key-hover: #fdf5f6;
 
   --pink: #d49aaa;
-  --pink-dark: #a9687c;
-  --pink-light: #f3e5e9;
+  --pink-strong: #a9687c;
+  --pink-soft: #f3e5e9;
 
   --text: #302b2e;
   --muted: #a39a9c;
   --border: #eee6e5;
 
-  --shadow: 0 24px 65px rgba(88, 54, 66, 0.09);
+  --shadow: 0 24px 65px rgba(89, 58, 68, .10),
+            0 3px 10px rgba(89, 58, 68, .04);
+
+  --key-shadow: 0 4px 0 #eee5e5,
+                0 6px 12px rgba(79, 54, 61, .06);
+
+  --key-pressed: 0 1px 0 #eee5e5,
+                 0 2px 5px rgba(79, 54, 61, .05);
 }
 
+
+/* ==============================
+   DARK THEME
+================================ */
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --page: #191619;
+  --page-glow: rgba(166, 104, 124, .12);
+
+  --card: #242024;
+  --display: #2c252b;
+  --key: #302930;
+  --key-hover: #3b3038;
+
+  --pink: #c8879c;
+  --pink-strong: #e0a5b8;
+  --pink-soft: #49313d;
+
+  --text: #f2e9ed;
+  --muted: #aa9da4;
+  --border: #3b3138;
+
+  --shadow: 0 24px 65px rgba(0, 0, 0, .28),
+            0 3px 10px rgba(0, 0, 0, .15);
+
+  --key-shadow: 0 4px 0 #211c21,
+                0 6px 12px rgba(0, 0, 0, .13);
+
+  --key-pressed: 0 1px 0 #211c21,
+                 0 2px 5px rgba(0, 0, 0, .12);
+}
+
+
+/* ==============================
+   GENERAL
+================================ */
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 body {
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 35px 18px;
+  margin: 0;
+  padding: 42px 20px 30px;
 
   background:
-    radial-gradient(
-      circle at 12% 15%,
-      rgba(226, 186, 198, 0.24),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 90% 85%,
-      rgba(211, 177, 187, 0.18),
-      transparent 35%
-    ),
-    var(--background);
+    radial-gradient(circle at 50% 12%, var(--page-glow), transparent 34rem),
+    var(--page);
 
-  font-family: 'DM Sans', sans-serif;
   color: var(--text);
+  font-family: "DM Sans", sans-serif;
+
+  transition: background .25s ease, color .25s ease;
 }
 
-/* MAIN CARD */
-
-.calculator {
-  width: 100%;
-  max-width: 460px;
-  padding: 34px;
-
-  background: var(--card);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: 27px;
-
-  box-shadow: var(--shadow);
+button {
+  font: inherit;
 }
 
-/* HEADER */
+.page-shell {
+  width: min(100%, 460px);
+  margin: 0 auto;
+}
 
-.header {
+
+/* ==============================
+   HEADER
+================================ */
+
+.page-heading,
+.brand,
+.page-footer,
+.calculator-topbar,
+.top-actions {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+}
 
-  padding-bottom: 22px;
-  border-bottom: 1px solid var(--border);
+.page-heading {
+  margin-bottom: 48px;
 }
 
 .brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  justify-content: flex-start;
+  gap: 11px;
 
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2px;
+  color: inherit;
+  text-decoration: none;
 }
 
 .brand-mark {
-  width: 36px;
-  height: 36px;
-
   display: grid;
   place-items: center;
 
-  background: var(--pink);
-  color: white;
-  border-radius: 12px;
+  width: 37px;
+  height: 37px;
 
-  font-family: 'Manrope', sans-serif;
-  font-size: 17px;
-  font-weight: 800;
+  border-radius: 13px;
+  background: var(--pink-soft);
+  color: var(--pink-strong);
+
+  font: 800 17px "Manrope", sans-serif;
 }
 
-.version {
-  padding: 9px 11px;
-  border-radius: 20px;
-
-  background: #f8f3f3;
-  color: var(--muted);
-
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.8px;
-}
-
-/* INTRODUCTION */
-
-.intro {
-  margin: 27px 0 24px;
-}
-
-.eyebrow {
-  margin-bottom: 8px;
-
-  color: var(--pink-dark);
-  font-size: 9px;
-  font-weight: 700;
+.brand-name {
+  font: 800 11px "Manrope", sans-serif;
   letter-spacing: 2px;
 }
 
-h1 {
-  font-family: 'Manrope', sans-serif;
-  font-size: 29px;
+.brand-name span {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.page-index,
+.eyebrow,
+.display-caption,
+.mode-label,
+.page-footer {
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: -1.3px;
+  letter-spacing: 1.65px;
+}
+
+.page-index,
+.eyebrow,
+.display-caption,
+.page-footer {
+  color: var(--muted);
+}
+
+
+/* ==============================
+   INTRO
+================================ */
+
+.intro {
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 9px;
+}
+
+h1 {
+  margin: 0;
+
+  font: 800 clamp(34px, 8vw, 43px)/1.1 "Manrope", sans-serif;
+  letter-spacing: -2px;
 }
 
 h1 span {
   color: var(--pink);
 }
 
-.subtitle {
-  margin-top: 6px;
+.intro-copy {
+  margin: 9px 0 0;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
 }
 
-/* DISPLAY */
 
-.display {
-  min-height: 165px;
-  padding: 21px;
+/* ==============================
+   CALCULATOR CARD
+================================ */
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.calculator {
+  padding: 22px;
 
-  background: linear-gradient(145deg, #fcf7f7, #f7eeee);
-  border: 1px solid #f0e5e7;
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 28px;
+
+  background: var(--card);
+  box-shadow: var(--shadow);
+
+  transition: background .25s ease, box-shadow .25s ease;
+}
+
+.calculator-topbar {
+  margin-bottom: 17px;
+}
+
+.mode-label {
+  color: var(--pink-strong);
+}
+
+.top-actions {
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+
+/* ==============================
+   ICON BUTTONS
+================================ */
+
+.icon-button {
+  display: grid;
+  place-items: center;
+
+  width: 35px;
+  height: 35px;
+
+  border: 1px solid var(--border);
+  border-radius: 13px;
+
+  background: var(--display);
+  color: var(--muted);
+
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.icon-button:hover,
+.icon-button[aria-pressed="true"] {
+  color: var(--pink-strong);
+  border-color: var(--pink);
+  background: var(--pink-soft);
+}
+
+.icon-button svg {
+  width: 17px;
+  height: 17px;
+
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.moon-icon {
+  display: none;
+}
+
+html[data-theme="dark"] .sun-icon {
+  display: none;
+}
+
+html[data-theme="dark"] .moon-icon {
+  display: block;
+}
+
+
+/* ==============================
+   DISPLAY
+================================ */
+
+.display-panel {
+  min-height: 151px;
+  padding: 17px 18px 15px;
+
+  border: 1px solid var(--border);
   border-radius: 19px;
 
-  text-align: right;
+  background: var(--display);
   overflow: hidden;
 }
 
-.display-top {
+.display-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
+}
+
+.display-caption {
+  font-size: 8px;
+  letter-spacing: 1.25px;
+  white-space: nowrap;
+}
+
+.history-value {
+  max-width: 62%;
+  overflow: hidden;
 
   color: var(--muted);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1.4px;
-}
-
-.display-indicator {
-  width: 7px;
-  height: 7px;
-
-  border-radius: 50%;
-  background: var(--pink);
-
-  box-shadow: 0 0 0 4px rgba(201, 133, 154, 0.12);
-}
-
-/* Compact previous calculation */
-
-.history {
-  min-height: 20px;
-  margin-top: 9px;
-
-  color: var(--pink-dark);
-  font-size: 12px;
-  font-weight: 500;
-
-  white-space: nowrap;
-  overflow: hidden;
+  font-size: 10px;
+  text-align: right;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .display-divider {
   height: 1px;
-  margin: 13px 0;
-
-  background: rgba(185, 144, 155, 0.17);
-}
-
-.current-label {
-  text-align: left;
-
-  color: var(--muted);
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1.4px;
+  margin: 14px 0 12px;
+  background: var(--border);
 }
 
 .expression {
-  min-height: 17px;
-  margin-top: 4px;
+  min-height: 19px;
+  margin-top: 5px;
 
+  overflow: hidden;
   color: var(--muted);
+
   font-size: 12px;
-  overflow-wrap: anywhere;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.result {
-  color: var(--text);
+.display-result {
+  margin-top: 1px;
+  overflow: hidden;
 
-  font-family: 'Manrope', sans-serif;
-  font-size: 42px;
-  font-weight: 700;
-  letter-spacing: -2px;
-  line-height: 1.3;
-
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  font: 700 clamp(29px, 7vw, 36px)/1.2 "Manrope", sans-serif;
+  letter-spacing: -1.4px;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* BUTTON GRID */
 
-.buttons {
+/* ==============================
+   KEYPADS
+================================ */
+
+.standard-pad,
+.scientific-pad {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 13px;
-
-  margin-top: 25px;
+  gap: 11px;
 }
 
-/* ALL BUTTONS */
+.standard-pad {
+  margin-top: 16px;
+}
 
-.btn {
-  height: 62px;
+.scientific-pad {
+  margin-top: 15px;
+  padding-bottom: 14px;
 
-  border: none;
-  border-radius: 21px;
+  border-bottom: 1px solid var(--border);
 
-  font-family: 'Manrope', sans-serif;
-  font-size: 19px;
-  font-weight: 700;
+  animation: reveal .22s ease both;
+}
+
+.scientific-pad[hidden] {
+  display: none;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ==============================
+   BUBBLE BUTTONS
+================================ */
+
+.key {
+  min-width: 0;
+  height: 57px;
+
+  border: 1px solid var(--border);
+  border-radius: 19px;
+
+  background: var(--key);
+  color: var(--text);
+
+  box-shadow: var(--key-shadow);
 
   cursor: pointer;
 
+  font-size: 17px;
+  font-weight: 600;
+
   transition:
-    transform 0.18s ease,
-    background 0.18s ease,
-    box-shadow 0.18s ease;
+    transform .12s ease,
+    background .18s ease,
+    color .18s ease,
+    box-shadow .12s ease;
 
   -webkit-tap-highlight-color: transparent;
 }
 
-/* NUMBER BUBBLES */
-
-.number {
-  color: var(--text);
-  background: #f7f4f3;
-
-  box-shadow:
-    0 4px 0 #eae4e2,
-    0 5px 10px rgba(50, 35, 40, 0.035);
+.key:hover {
+  background: var(--key-hover);
 }
 
-.number:hover {
-  background: #f0e9e8;
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 6px 0 #e5dcda,
-    0 8px 13px rgba(50, 35, 40, 0.05);
+.key:active {
+  transform: translateY(3px);
+  box-shadow: var(--key-pressed);
 }
 
-/* OPERATOR BUBBLES */
-
-.operator {
-  color: var(--pink-dark);
-  background: var(--pink-light);
-
-  box-shadow:
-    0 4px 0 #e8d5db,
-    0 5px 10px rgba(169, 104, 124, 0.06);
+.key:focus-visible,
+.icon-button:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 3px;
 }
 
-.operator:hover {
-  background: #ecd8df;
-  transform: translateY(-2px);
+
+/* Operators */
+
+.key-operator {
+  background: var(--pink-soft);
+  border-color: transparent;
+  color: var(--pink-strong);
 }
 
-/* CLEAR */
 
-.clear {
-  color: #916b78;
-  background: #f0e8e9;
+/* Clear */
 
-  box-shadow: 0 4px 0 #e2d6d9;
+.key-clear {
+  background: #f5e9ec;
+  border-color: transparent;
+  color: #a9687c;
 }
 
-.clear:hover {
-  background: #e8dcdf;
-  transform: translateY(-2px);
+html[data-theme="dark"] .key-clear {
+  background: #49313d;
+  color: #e0a5b8;
 }
 
-/* EQUALS */
 
-.equals {
-  grid-row: span 2;
+/* Equals */
+
+.key-equals {
+  grid-column: 4;
+  grid-row: 4 / span 2;
+
   height: auto;
+  min-height: 125px;
 
-  color: white;
-  background: linear-gradient(145deg, #d49aaa, #a9687c);
-
-  border-radius: 21px;
-
-  font-size: 27px;
+  background: var(--pink);
+  border-color: transparent;
+  color: #fff;
 
   box-shadow:
-    0 5px 0 #96576c,
-    0 8px 17px rgba(169, 104, 124, 0.19);
+    0 4px 0 #bd8294,
+    0 7px 13px rgba(169, 104, 124, .18);
+
+  font-size: 23px;
 }
 
-.equals:hover {
-  background: linear-gradient(145deg, #c9879c, #985a70);
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 7px 0 #96576c,
-    0 11px 20px rgba(169, 104, 124, 0.22);
+.key-equals:hover {
+  background: var(--pink-strong);
+  color: #fff;
 }
 
-.zero {
+
+/* Zero */
+
+.key-zero {
   grid-column: span 2;
 }
 
-/* BUTTON PRESS EFFECT */
 
-.btn:active {
-  transform: translateY(3px) scale(0.97);
-  box-shadow: none;
+/* Scientific buttons */
+
+.key-function {
+  height: 43px;
+
+  border-radius: 15px;
+  background: var(--display);
+  color: var(--pink-strong);
+
+  font-size: 13px;
 }
 
-.btn:focus-visible {
-  outline: 2px solid var(--pink-dark);
-  outline-offset: 4px;
+.key-function:hover {
+  background: var(--pink-soft);
 }
 
-/* FOOTER */
+.key-angle {
+  height: 43px;
 
-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
+  border-radius: 15px;
+  background: var(--pink-soft);
+  border-color: transparent;
+  color: var(--pink-strong);
 
-  margin-top: 27px;
-  padding-top: 17px;
-
-  border-top: 1px solid var(--border);
-
-  color: var(--muted);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  font-size: 11px;
+  letter-spacing: .7px;
 }
 
-.copyright {
-  color: var(--pink-dark);
+
+/* ==============================
+   FOOTER
+================================ */
+
+.page-footer {
+  margin-top: 24px;
+  font-size: 8px;
+  letter-spacing: 1.2px;
 }
 
-/* RESPONSIVE */
+
+/* ==============================
+   RESPONSIVE
+================================ */
 
 @media (max-width: 480px) {
+
   body {
-    padding: 18px 12px;
+    padding: 26px 14px 22px;
+  }
+
+  .page-heading {
+    margin-bottom: 37px;
   }
 
   .calculator {
-    padding: 24px;
-    border-radius: 23px;
+    padding: 17px;
+    border-radius: 24px;
   }
 
-  .buttons {
-    gap: 11px;
+  .standard-pad,
+  .scientific-pad {
+    gap: 9px;
   }
 
-  .btn {
-    height: 57px;
-    border-radius: 18px;
+  .key {
+    height: 54px;
+    border-radius: 17px;
   }
 
-  .equals {
-    height: auto;
+  .key-equals {
+    min-height: 117px;
   }
 
-  .result {
-    font-size: 35px;
+  .key-function,
+  .key-angle {
+    height: 40px;
+    border-radius: 13px;
   }
 
-  footer {
-    font-size: 8px;
+  .page-footer {
+    font-size: 7px;
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    transition: none !important;
-  }
 }
